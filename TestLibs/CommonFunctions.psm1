@@ -63,6 +63,34 @@ function LogMsg()
     }  
 }
 
+Function LogErr 
+{
+    param
+    (
+        [string]$text
+    )
+    {
+        LogError ($text)
+    }
+}
+
+Function LogWarn()
+{
+    param
+    (
+        [string]$text
+    )
+    try
+    {
+        $text = $text.Replace('"','`"')
+        $now = [Datetime]::Now.ToUniversalTime().ToString("MM/dd/yyyy HH:mm:ss")
+        Write-Host "WARGNING: $now : $text"
+    }
+    catch
+    {
+        ThrowException($_)
+    }  
+}
 Function ValiateXMLs( [string]$ParentFolder )
 {
     LogMsg "Validating XML Files from $ParentFolder folder recursively..."

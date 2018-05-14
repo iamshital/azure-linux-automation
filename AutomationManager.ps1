@@ -214,7 +214,6 @@ try
             Set-Variable -Name DebugOsImage -Value $OsImage -Scope Global
         }
         $testCycle =  GetCurrentCycleData -xmlConfig $xmlConfig -cycleName $cycleName
-        Write-Host "$Distro............."
         $testSuiteResultDetails=.\AzureTestSuite.ps1 $xmlConfig -Distro $Distro -cycleName $cycleName -testIterations $testIterations
         $logDirFilename = [System.IO.Path]::GetFilenameWithoutExtension($xmlConfigFile)
         $summaryAll = GetTestSummary -testCycle $testCycle -StartTime $testStartTime -xmlFileName $logDirFilename -distro $Distro -testSuiteResultDetails $testSuiteResultDetails

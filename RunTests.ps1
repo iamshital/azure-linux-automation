@@ -84,8 +84,8 @@ try
     #endregion
     
     #region Local Variables
-    $TestXMLs = Get-ChildItem -Path "$WorkingDirectory\XML\Tests\*.xml"
-    $SetupTypeXMLs = Get-ChildItem -Path "$WorkingDirectory\XML\VMConfiguration\*.xml"
+    $TestXMLs = Get-ChildItem -Path "$WorkingDirectory\XML\TestCases\*.xml"
+    $SetupTypeXMLs = Get-ChildItem -Path "$WorkingDirectory\XML\VMConfigurations\*.xml"
     $allTests = @()
     $ARMImage = $ARMImageName.Split(" ")
     $xmlFile = "$WorkingDirectory\TestConfiguration.xml"
@@ -384,8 +384,8 @@ try
     Move-Item -Path "*.exe" -Destination .\tools -ErrorAction SilentlyContinue -Force
     #endregion
 
-    LogMsg ".\AutomationManager.ps1 -xmlConfigFile $xmlFile -cycleName `"TC-$shortRandomNumber`" -RGIdentifier $RGIdentifier -runtests -UseAzureResourceManager"
-    .\AutomationManager.ps1 -xmlConfigFile $xmlFile -cycleName "TC-$shortRandomNumber" -RGIdentifier $RGIdentifier -runtests -UseAzureResourceManager -
+    LogMsg ".\AutomationManager.ps1 -xmlConfigFile '$xmlFile' -cycleName TC-$shortRandomNumber -RGIdentifier $RGIdentifier -runtests -UseAzureResourceManager"
+    .\AutomationManager.ps1 -xmlConfigFile "$xmlFile" -cycleName "TC-$shortRandomNumber" -RGIdentifier $RGIdentifier -runtests -UseAzureResourceManager -
     
     #TBD Analyse the test result
     #TBD Archive the logs

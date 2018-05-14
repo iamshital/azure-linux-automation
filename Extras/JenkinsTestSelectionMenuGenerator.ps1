@@ -1,13 +1,13 @@
 
 Param(
-    $DestinationPath = "D:\GitHub\azure-linux-automation\temp"
+    $DestinationPath = ".\"
 )
 
 Get-ChildItem .\TestLibs\*.psm1 | ForEach-Object { Import-Module $_.FullName -Force}
 ValiateXMLs -ParentFolder ".\"
 
 $xmlData = @()
-foreach ( $file in (Get-ChildItem -Path .\XML\Tests\*.xml ))
+foreach ( $file in (Get-ChildItem -Path .\XML\TestCases\*.xml ))
 {
     $xmlData += ([xml](Get-Content -Path $file.FullName)).TestCases
 }
