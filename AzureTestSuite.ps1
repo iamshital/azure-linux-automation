@@ -294,10 +294,11 @@ Function RunTestsOnCycle ($cycleName , $xmlConfig, $Distro, $testIterations )
 					$testcase = StartLogTestCase $testsuite "$($test.Name)" "CloudTesting.$($testCycle.cycleName)"
 					$testSuiteResultDetails.totalTc = $testSuiteResultDetails.totalTc +1
 					$stopWatch = SetStopWatch
-					mkdir $testDir\$($test.Name) -ErrorAction SilentlyContinue | out-null
 					Set-Variable -Name currentTestData -Value $currentTestData -Scope Global
+					mkdir "$testDir\$($currentTestData.testName)" -ErrorAction SilentlyContinue | out-null
 					$testCaseLogFile = $testDir + "\" + $($currentTestData.testName) + "\" + "azure_ica.log"
 					$global:logFile  = $testCaseLogFile
+					Set-Content -Value "" -Path $testCaseLogFile -Force | Out-Null 
 					if ((!$currentTestData.SubtestValues -and !$currentTestData.TestMode))
 					{
 						#Tests With No subtests and no SubValues will be executed here..

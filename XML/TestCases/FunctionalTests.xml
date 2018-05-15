@@ -9,7 +9,7 @@
 		<Platform>Azure</Platform>
 		<Category>Functional</Category>
 		<Area>default</Area>
-		<Tags>gpu</Tags>
+		<Tags>gpu,pci_hyperv</Tags>
 		<TestID>Functional_001</TestID>
 	</test>
 </TestCases>
